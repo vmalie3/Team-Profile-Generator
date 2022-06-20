@@ -1,13 +1,14 @@
-//Manager: name, employee ID, email address, office number
-//Engineer: name, ID, email, GitHub username
-//Intern: name, ID, email, school
+
 const inquirer = require('inquirer');
 inquirer.registerPrompt('loop', require('inquirer-loop')(inquirer))
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const Manager = require('./lib/manager');
+const create = require('./pageCreate/createPage');
 
 const teamArr = [];
+const engineerArr = [];
+const internArr = [];
 
 const questions = [
     {
@@ -128,6 +129,7 @@ function addEmployee() {
 
         const manager = new Manager (name, id, email, officeNumber);
         teamArr.push(manager);
+        const managerOb = manager;
         const employees = addEmployee;
         let newEmployee;
 
@@ -136,16 +138,20 @@ function addEmployee() {
                 let {name, id, email, gitHub} = employees[i];
                 newEmployee = new Engineer (name, id, email, gitHub);
                 teamArr.push(newEmployee);
+                engineerArr.push(newEmployee);
             } else if (employees[i].title === 'Intern') {
                 let {name, id, email, school} = employees[i];
                 newEmployee = new Intern (name, id, email, school);
                 teamArr.push(newEmployee);
+                internArr.push(newEmployee);
             }
         }
-
-    
         
-        console.log(teamArr);
+        create.createPage(managerOb, engineerArr, internArr);
+        
+        // console.log(teamArr);
+        // console.log('-------');
+        // console.log(teamArr.Engineer);
     })
 }
 
