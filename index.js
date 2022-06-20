@@ -1,16 +1,17 @@
 //Manager: name, employee ID, email address, office number
 //Engineer: name, ID, email, GitHub username
 //Intern: name, ID, email, school
+const inquirer = require('inquirer');
 
-const initialQuestions = [
+
+
+const questions = [
     {
-        type: 'confirm',
-        message: 'Would you like to begin building your team?',
-        name: 'beginTeam',
+        type: 'rawlist',
+        message: 'What is the employee\'s title?',
+        name:'title',
+        choices: ['Manager', 'Engineer', "Intern"]
     },
-]
-
-const questionsForAll = [
     {
         type: 'input',
         message: 'What is the employee\'s name?',
@@ -50,28 +51,37 @@ const questionsForAll = [
             }
         }
     },
+    {
+        type: 'input',
+        message: 'What is the manager\'s office number?',
+        name: 'officeNumber'
+    },
+    {
+        type: 'input',
+        message: 'What is the engineer\'s GitHub username?',
+        name: 'gitHub'
+    },
+    {
+        type: 'input',
+        message: 'What school does this intern attend?',
+        name: 'school'
+    },
+    {
+        type: 'confirm',
+        message: 'Would you like to add another employee?',
+        name: 'addAnother'
+    },
 ]
 
-const managerQs = {
-    type: 'input',
-    message: 'What is the manager\'s office number?',
-    name: 'officeNumber'
-}
+function addEmployee() {
+    inquirer.prompt(questions)
+    .then(data => {
+        let {title, name, id, email, officeNumber, gitHub, school, addAnother} = data;
 
-const employeeTitleQ = {
-    type: 'rawlist',
-    message: 'What is the employee\'s title?',
-    name:'employeeTitle'
-}
-
-const engineerQs = {
-    type: 'input',
-    message: 'What is the engineer\'s GitHub username?',
-    name: 'gitHub'
-}
-
-const internQs = {
-    type: 'input',
-    message: 'What school does this intern attend?',
-    name: 'school'
+        if (addAnother) {
+            addEmployee();
+        } else {
+            console.log('Your team has been successfully created!')
+        }
+    })
 }
