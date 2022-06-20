@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function managerCard(manager) {
-    let {name, id, email, officeNumber} = manager;
+    let { name, id, email, officeNumber } = manager;
     const managerHTML = `
     <div class="card m-3" style="width: 18rem;">
             <div class="card-body">
@@ -18,9 +18,8 @@ function managerCard(manager) {
 }
 
 function engineerCard(engineers) {
-    for (let i = 0; i < engineers.length; i++) {
-        let {name, id, email, gitHub} = engineers[i];
-        let engineerHTML = `
+    let { name, id, email, gitHub } = engineers;
+    let engineerHTML = `
         <div class="card m-3" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${name}</h5>
@@ -32,14 +31,13 @@ function engineerCard(engineers) {
                 <li class="list-group-item"><a href="https://github.com/${gitHub}" class="card-link">GitHub</a></li>
             </ul>
         </div>`
-        return engineerHTML;
-    }
+    return engineerHTML;
 }
 
+
 function internCard(interns) {
-    for (let i = 0; i < interns; i++) {
-        let {name, id, email, school} = interns[i];
-        let internHTML = `
+    let { name, id, email, school } = interns;
+    let internHTML = `
         <div class="card m-3" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${name}</h5>
@@ -51,14 +49,37 @@ function internCard(interns) {
                 <li class="list-group-item">School: ${school}</li>
             </ul>
         </div>`
-        return internHTML;
-    }
+    return internHTML;
 }
 
-function createPage (manager, engineers, interns) {
-    console.log(manager);
-    console.log(engineers);
-    console.log(interns);
+
+
+
+function createPage(data) {
+    console.log(data);
+
+    const cardArr = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const title = employee.getTitle();
+
+        if (title === 'Manager') {
+            const newManager = managerCard(employee);
+            cardArr.push(newManager);
+        }
+        if (title === 'Engineer') {
+            const newEngineer = engineerCard(employee);
+            cardArr.push(newEngineer);
+        }
+        if (title === 'Intern') {
+            const newIntern = internCard(employee);
+            cardArr.push(newIntern);
+        }
+    }
+
+    console.log(cardArr);
+
     const template = `
     <!DOCTYPE html>
 <html lang="en">
@@ -78,15 +99,13 @@ function createPage (manager, engineers, interns) {
         <h1>Your Team</h1>
     </header>
     <div class="card-deck">
-        ${managerCard(manager)}
-        ${engineerCard(engineers)}
-        ${internCard(interns)}
+        ${cardArr}
     </div>
 </body>
 
 </html>`;
 
-fs.writeFileSync('./sample/index.html', template)
+    fs.writeFileSync('./sample/index.html', template)
     console.log('success');
     process.exit();
 }

@@ -147,7 +147,7 @@ function addEmployee() {
             }
         }
         
-        create.createPage(managerOb, engineerArr, internArr);
+        create.createPage(teamArr);
         
         // console.log(teamArr);
         // console.log('-------');
