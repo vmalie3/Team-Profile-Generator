@@ -21,6 +21,7 @@
     "bootstrap": "^5.2.0-beta1",
     "fs": "^0.0.1-security",
     "inquirer": "^8.2.4",
-    "inquirer-loop": "^0.3.0"
+    "inquirer-loop": "^0.3.0",
+    "jest": "^28.1.1"
   }
 }

@@ -148,10 +148,6 @@ function addEmployee() {
         }
         
         create.createPage(teamArr);
-        
-        // console.log(teamArr);
-        // console.log('-------');
-        // console.log(teamArr.Engineer);
     })
 }
 
