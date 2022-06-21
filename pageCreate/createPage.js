@@ -10,7 +10,7 @@ function managerCard(manager) {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="malito:${email}" class="card-link">Email</a></li>
+                <li class="list-group-item"><a href="mailto:${email}" class="card-link">${email}</a></li>
                 <li class="list-group-item">office: ${officeNumber}</li>
             </ul>
     </div>`
@@ -27,7 +27,7 @@ function engineerCard(engineers) {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="malito:${email}" class="card-link">Email</a></li>
+                <li class="list-group-item"><a href="mailto:${email}" class="card-link">${email}</a></li>
                 <li class="list-group-item"><a href="https://github.com/${gitHub}" class="card-link">GitHub</a></li>
             </ul>
         </div>`
@@ -45,19 +45,14 @@ function internCard(interns) {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="malito:${email}" class="card-link">Email</a></li>
+                <li class="list-group-item"><a href="mailto:${email}" class="card-link">${email}</a></li>
                 <li class="list-group-item">School: ${school}</li>
             </ul>
         </div>`
     return internHTML;
 }
 
-
-
-
 function createPage(data) {
-    console.log(data);
-
     const cardArr = [];
 
     for (let i = 0; i < data.length; i++) {
@@ -77,8 +72,6 @@ function createPage(data) {
             cardArr.push(newIntern);
         }
     }
-
-    console.log(cardArr);
 
     const template = `
     <!DOCTYPE html>
@@ -106,7 +99,7 @@ function createPage(data) {
 </html>`;
 
     fs.writeFileSync('./sample/index.html', template)
-    console.log('success');
+    console.log('\nYou\'ve successfully generated your team page!');
     process.exit();
 }
 
