@@ -98,8 +98,8 @@ function createPage(data) {
     <header>
         <h1>Your Team</h1>
     </header>
-    <div class="card-deck">
-        ${cardArr}
+    <div class="card-deck m-3">
+        ${cardArr.join('')}
     </div>
 </body>
 
