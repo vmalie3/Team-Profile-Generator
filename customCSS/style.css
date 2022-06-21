@@ -8,4 +8,5 @@ header {
 
 .card {
    min-width: 25%!important;
+   max-width: 50%!important;
 }
