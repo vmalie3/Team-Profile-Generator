@@ -25,6 +25,10 @@ Generating team profile page:
 
 ![Team Profile Generator gif](./visuals/team-prof-gif.gif)
 
+What this generates in browser:
+
+![Team Page Screenshot](./visuals/team-page-screenshot.png)
+
 Running Tests:
 
 ![Team Profile Tests gif](./visuals/team-prof-gif2.gif)
