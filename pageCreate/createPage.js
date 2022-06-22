@@ -1,4 +1,8 @@
+// connected fs to enable writing files using fs
+
 const fs = require('fs');
+
+// created a function the includes the html that produces a manager card
 
 function managerCard(manager) {
     let { name, id, email, officeNumber } = manager;
@@ -17,6 +21,8 @@ function managerCard(manager) {
     return managerHTML;
 }
 
+// created a function the includes the html that produces an engineer card
+
 function engineerCard(engineers) {
     let { name, id, email, gitHub } = engineers;
     let engineerHTML = `
@@ -34,6 +40,7 @@ function engineerCard(engineers) {
     return engineerHTML;
 }
 
+// created a function the includes the html that produces an intern card
 
 function internCard(interns) {
     let { name, id, email, school } = interns;
@@ -51,6 +58,8 @@ function internCard(interns) {
         </div>`
     return internHTML;
 }
+
+// created a function that puts the html cards in a single array (to avoid undefined); builds html using template literal & the array; writes file
 
 function createPage(data) {
     const cardArr = [];
@@ -102,6 +111,8 @@ function createPage(data) {
     console.log('\nYou\'ve successfully generated your team page!');
     process.exit();
 }
+
+// exports create page function
 
 module.exports = {
     createPage

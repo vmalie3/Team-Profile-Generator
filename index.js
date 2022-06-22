@@ -1,3 +1,4 @@
+// added all my needed variables / attachments
 
 const inquirer = require('inquirer');
 inquirer.registerPrompt('loop', require('inquirer-loop')(inquirer))
@@ -7,8 +8,8 @@ const Manager = require('./lib/manager');
 const create = require('./pageCreate/createPage');
 
 const teamArr = [];
-const engineerArr = [];
-const internArr = [];
+
+// created questions array with looping functionality
 
 const questions = [
     {
@@ -120,6 +121,7 @@ const questions = [
     ]}
 ]
 
+// created a function to prompt the questions and create an Employee object
 
 function addEmployee() {
     inquirer.prompt(questions)
@@ -129,7 +131,6 @@ function addEmployee() {
 
         const manager = new Manager (name, id, email, officeNumber);
         teamArr.push(manager);
-        const managerOb = manager;
         const employees = addEmployee;
         let newEmployee;
 
@@ -138,12 +139,10 @@ function addEmployee() {
                 let {name, id, email, gitHub} = employees[i];
                 newEmployee = new Engineer (name, id, email, gitHub);
                 teamArr.push(newEmployee);
-                engineerArr.push(newEmployee);
             } else if (employees[i].title === 'Intern') {
                 let {name, id, email, school} = employees[i];
                 newEmployee = new Intern (name, id, email, school);
                 teamArr.push(newEmployee);
-                internArr.push(newEmployee);
             }
         }
         
